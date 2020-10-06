@@ -12,6 +12,7 @@
             $scope.nome = 'Lucas';
         });
 
+
     // APLICAÇÃO 2
     angular
         .module('app2', [])

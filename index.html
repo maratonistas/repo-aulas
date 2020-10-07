@@ -1,38 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="listaTarefasApp" lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+    <script src="lista-tarefas.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="lista-tarefas.css">
+
 </head>
 
 <body>
-    <div id="app1">
-        <div ng-controller="controlador1">
-            <h1>Olá {{ nome }} </h1>
-            <input type="text" ng-model="nome" placeholder="Enter a name here">
-            <br>
-            <br>
+    <div class="mx-auto mt-5 jumbotron" style="width: 500px;">
+        <h2 class="font-weight-bold">Lista de Tarefas</h2>
+        <div ng-controller="listaTarefasController as vm">
+            <div class="mb-2">
+                Restam {{vm.restam()}} de {{vm.tarefas.length}}
+                [ <a href="" ng-click="vm.arquivar()">arquivar</a> ]
+            </div>
+            <ul class="unstyled">
+                <li ng-repeat="trf in vm.tarefas">
+                    <label class="checkbox">
+                        <input type="checkbox" ng-model="trf.feito">
+                        <span class="feito-{{trf.feito}}">{{trf.text}}</span>
+                    </label>
+                </li>
+            </ul>
+            <form class="form-inline" ng-submit="vm.addTarefa()">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="vm.tarefaText" size="30"
+                           placeholder="add nova tarefa aqui">
+                    <input class="btn btn-primary ml-2" type="submit" value="+">
+                </div>
+            </form>
         </div>
     </div>
-    <br>
-    <br>
-    <!-- NÃO POE O NG-APP NA DIV DA APLICAÇÃO, MAS TEMOS QUE EXECUTA-LA MANUALMENTE
-    ATRAVES DO ANGULAR.BOOTSTRAP -->
-    <div id="app2">
-        <div ng-controller="controlador2">
-            <h1>Contador</h1>
-            <h1>{{ contador }}</h1>
-            <button ng-click="contador = contador + 1;">ADD + 1</button>
-            <button ng-click="contador = contador - 1;">SUB - 1</button>
-        </div>
-    </div>
-
-    <!-- A IMPORTAÇÃO DO ARQUIVO TEM QUE FICAR NO FINAL PARA QUE A PÁGINA TENHA SIDO
-    CARREGADA PRA PODER BUSCAR OS ELEMENTOS ONDE A APLICAÇÃO VAI SER EXECUTADA -->
-    <script src="app.js"></script>
 </body>
 
 </html>

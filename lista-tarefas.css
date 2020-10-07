@@ -1,0 +1,10 @@
+.feito-true {
+    text-decoration: line-through;
+    color: grey;
+}
+
+ul.unstyled,
+ol.unstyled {
+    margin-left: 0;
+    list-style: none;
+}

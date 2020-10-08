@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://bootswatch.com/4/darkly/bootstrap.css">
     <link rel="stylesheet" href="lista-compras.css">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.js"></script>
+    <script src="node_modules/angular/angular.js"></script>
 
     <script src="lista-compras.js"></script>
 </head>
@@ -59,21 +59,13 @@
     <!-- ### ESPAÇO ALERTAS ### -->
     <div id="alertas" class="container" ng-show="listaMensagens.length">
         <div ng-repeat="msg in listaMensagens" class="alert alert-{{msg.tipo}}" role="alert">
-            {{msg.text | limitTo : 3 : 5}}
+            {{msg.text}}
             <button type="button" class="close" aria-label="Close"
                     ng-click="listaMensagens.splice($index, 1)">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
     </div>
-    ===>>> {{vm.teste | capitalize}}
-    <!-- <div class="container">
-        <input type="text" ng-model="data">
-        <div ng-show="hide">
-            <input type="text" ng-model="data">
-        </div>
-        <button ng-click="hide = !hide">T</button>
-    </div> -->
 
     <!-- ### HOME PAGE ### -->
     <div class="container" ng-if="vm.logado">

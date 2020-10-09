@@ -24,7 +24,7 @@ function configGrunt(grunt) {
                 cwd: './node_modules',
                 src: [
                     'angular/angular.js',
-                    // 'angular-route/angular-route.js',
+                    'angular-route/angular-route.js',
                 ],
                 dest: vendorDir
             }
